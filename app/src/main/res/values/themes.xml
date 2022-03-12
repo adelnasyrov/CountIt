@@ -9,6 +9,7 @@
         <item name="colorSecondary">@color/back</item>
         <item name="colorSecondaryVariant">@color/back</item>
         <item name="colorOnSecondary">@color/back</item>
+        <item name="fontFamily">@font/lemon_milk</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
