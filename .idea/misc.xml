@@ -14,9 +14,11 @@
         <entry key="app/src/main/res/layout/fragment_plus_game_1.xml" value="0.2671875" />
         <entry key="app/src/main/res/layout/fragment_plus_game_2.xml" value="0.2671875" />
         <entry key="app/src/main/res/layout/fragment_starter.xml" value="0.2671875" />
-        <entry key="app/src/main/res/layout/up_bar_view.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/up_bar_view.xml" value="0.1" />
         <entry key="app/src/main/res/menu/menu1.xml" value="0.2671875" />
         <entry key="app/src/main/res/menu/menu2.xml" value="0.2671875" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.27897435897435896" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.15260416666666668" />
       </map>
     </option>
   </component>

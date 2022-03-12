@@ -1,4 +1,4 @@
-package com.example.letscount.division
+package com.example.letscount.division_action
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

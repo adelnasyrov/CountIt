@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/starter">
+    app:startDestination="@id/plus">
 
     <fragment
         android:id="@+id/plus"
-        android:name="com.example.kotlin_memes.plus_action.show_memes"
+        android:name="com.example.letscount.plus_action.show_memes"
         android:label="@string/plus"
         tools:layout="@layout/fragment_plus">
         <action
@@ -30,7 +30,7 @@
 
     <fragment
         android:id="@+id/minus"
-        android:name="com.example.kotlin_memes.show_memes2"
+        android:name="com.example.letscount.minus_action.show_memes2"
         android:label="fragment_show_memes"
         tools:layout="@layout/fragment_minus">
         <action
@@ -48,7 +48,7 @@
     </fragment>
     <fragment
         android:id="@+id/multiplication"
-        android:name="com.example.kotlin_memes.show_memes3"
+        android:name="com.example.letscount.multiplication_action.show_memes3"
         android:label="fragment_show_memes3"
         tools:layout="@layout/fragment_multiplication">
         <action
@@ -66,7 +66,7 @@
     </fragment>
     <fragment
         android:id="@+id/division"
-        android:name="com.example.kotlin_memes.show_memes4"
+        android:name="com.example.letscount.division_action.show_memes4"
         android:label="fragment_show_memes4"
         tools:layout="@layout/fragment_division">
         <action
@@ -84,7 +84,7 @@
     </fragment>
     <fragment
         android:id="@+id/plus_game"
-        android:name="com.example.kotlin_memes.show_memes5"
+        android:name="com.example.letscount.plus_action.show_memes5"
         android:label="fragment_show_memes5"
         tools:layout="@layout/fragment_plus_game_1">
         <action
@@ -94,7 +94,7 @@
     </fragment>
     <fragment
         android:id="@+id/plus_game_2"
-        android:name="com.example.kotlin_memes.plus_action.plus_game_2"
+        android:name="com.example.letscount.plus_action.plus_game_2"
         android:label="fragment_plus_game_2"
         tools:layout="@layout/fragment_plus_game_2">
         <action
@@ -104,7 +104,7 @@
     </fragment>
     <fragment
         android:id="@+id/starter"
-        android:name="com.example.kotlin_memes.starter"
+        android:name="com.example.letscount.starter"
         android:label="fragment_starter"
         tools:layout="@layout/fragment_starter">
         <action
