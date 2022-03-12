@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Let\'s Count</string>
+    <string name="plus">Plus</string>
+    <string name="minus">Minus</string>
+    <string name="multiplication">Multiplication</string>
+    <string name="division">Division</string>
+    <string name="easy">Easy</string>
+    <string name="go"><![CDATA[>]]></string>
+    <string name="medium">Medium</string>
+    <string name="hard">hard</string>
+    <string name="score">Score: 0</string>
+</resources>

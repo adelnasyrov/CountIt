@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/item_1"
+        android:icon="@drawable/icon_1"
+        android:title="@string/plus" />
+    <item
+        android:id="@+id/item_2"
+        android:icon="@drawable/icon_2"
+        android:title="@string/minus" />
+    <item
+        android:id="@+id/item_3"
+        android:icon="@drawable/icon_3"
+        android:title="@string/multiplication" />
+    <item
+        android:id="@+id/item_4"
+        android:icon="@drawable/icon_4"
+        android:title="@string/division" />
+</menu>

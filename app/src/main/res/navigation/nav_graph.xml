@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/starter">
+
+    <fragment
+        android:id="@+id/plus"
+        android:name="com.example.kotlin_memes.plus_action.show_memes"
+        android:label="@string/plus"
+        tools:layout="@layout/fragment_plus">
+        <action
+            android:id="@+id/action_plus_to_minus"
+            app:destination="@id/minus"
+            app:enterAnim="@anim/from_right" />
+        <action
+            android:id="@+id/action_plus_to_multiplication"
+            app:destination="@id/multiplication"
+            app:enterAnim="@anim/from_right" />
+        <action
+            android:id="@+id/action_plus_to_division"
+            app:destination="@id/division"
+            app:enterAnim="@anim/from_right" />
+        <action
+            android:id="@+id/action_plus_to_plus_game"
+            app:destination="@id/plus_game"
+            app:enterAnim="@anim/from_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/minus"
+        android:name="com.example.kotlin_memes.show_memes2"
+        android:label="fragment_show_memes"
+        tools:layout="@layout/fragment_minus">
+        <action
+            android:id="@+id/action_minus_to_division"
+            app:destination="@id/division"
+            app:enterAnim="@anim/from_right" />
+        <action
+            android:id="@+id/action_minus_to_plus"
+            app:destination="@id/plus"
+            app:enterAnim="@anim/from_left" />
+        <action
+            android:id="@+id/action_minus_to_multiplication"
+            app:destination="@id/multiplication"
+            app:enterAnim="@anim/from_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/multiplication"
+        android:name="com.example.kotlin_memes.show_memes3"
+        android:label="fragment_show_memes3"
+        tools:layout="@layout/fragment_multiplication">
+        <action
+            android:id="@+id/action_multiplication_to_division"
+            app:destination="@id/division"
+            app:enterAnim="@anim/from_right" />
+        <action
+            android:id="@+id/action_multiplication_to_minus"
+            app:destination="@id/minus"
+            app:enterAnim="@anim/from_left" />
+        <action
+            android:id="@+id/action_multiplication_to_plus"
+            app:destination="@id/plus"
+            app:enterAnim="@anim/from_left" />
+    </fragment>
+    <fragment
+        android:id="@+id/division"
+        android:name="com.example.kotlin_memes.show_memes4"
+        android:label="fragment_show_memes4"
+        tools:layout="@layout/fragment_division">
+        <action
+            android:id="@+id/action_division_to_plus"
+            app:destination="@id/plus"
+            app:enterAnim="@anim/from_left" />
+        <action
+            android:id="@+id/action_division_to_minus"
+            app:destination="@id/minus"
+            app:enterAnim="@anim/from_left" />
+        <action
+            android:id="@+id/action_division_to_multiplication"
+            app:destination="@id/multiplication"
+            app:enterAnim="@anim/from_left" />
+    </fragment>
+    <fragment
+        android:id="@+id/plus_game"
+        android:name="com.example.kotlin_memes.show_memes5"
+        android:label="fragment_show_memes5"
+        tools:layout="@layout/fragment_plus_game_1">
+        <action
+            android:id="@+id/action_plus_game_to_plus_game_2"
+            app:destination="@id/plus_game_2"
+            app:enterAnim="@anim/from_right_2" />
+    </fragment>
+    <fragment
+        android:id="@+id/plus_game_2"
+        android:name="com.example.kotlin_memes.plus_action.plus_game_2"
+        android:label="fragment_plus_game_2"
+        tools:layout="@layout/fragment_plus_game_2">
+        <action
+            android:id="@+id/action_plus_game_2_to_plus_game"
+            app:destination="@id/plus_game"
+            app:enterAnim="@anim/from_right_2" />
+    </fragment>
+    <fragment
+        android:id="@+id/starter"
+        android:name="com.example.kotlin_memes.starter"
+        android:label="fragment_starter"
+        tools:layout="@layout/fragment_starter">
+        <action
+            android:id="@+id/action_starter_to_plus"
+            app:destination="@id/plus"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
+    </fragment>
+
+</navigation>
