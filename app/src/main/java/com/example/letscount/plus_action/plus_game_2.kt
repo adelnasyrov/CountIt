@@ -1,29 +1,20 @@
 package com.example.letscount.plus_action
 
 import android.content.Intent
-import android.content.pm.PackageManager
-import android.net.Uri
-import android.os.Build
 import android.os.Bundle
-import android.provider.Settings
 import android.speech.RecognitionListener
 import android.speech.RecognizerIntent
 import android.speech.SpeechRecognizer
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.letscount.R
-import java.io.File
-import java.io.FileReader
-import java.io.FileWriter
 import java.util.*
 import kotlin.random.Random
 
@@ -41,6 +32,7 @@ class plus_game_2 : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    private var level: String? = null
     private var result: TextView? = null
     private var icmicro: ImageView? = null
     private var score_text: TextView? = null
@@ -66,15 +58,21 @@ class plus_game_2 : Fragment() {
         val number2: TextView = v.findViewById(R.id.number2)
         icmicro = v.findViewById(R.id.ic_micro)
         result = v.findViewById(R.id.result)
-        randomValue1 = Random.nextInt(0, 10)
-        randomValue2 = Random.nextInt(0, 10)
+        level = arguments?.getString("amount")
+        var range: Int = 10
+        if (level == "1")
+            range = 10
+        if (level == "2")
+            range = 100
+        if (level == "3")
+            range = 1000
+        randomValue1 = Random.nextInt(0, range)
+        randomValue2 = Random.nextInt(0, range)
         number1.text = randomValue1.toString()
         number2.text = randomValue2.toString()
-        arguments?.getString("amount")?.toInt()
         icmicro?.setOnClickListener {
             if (flag == 0) {
                 flag = 1
-                checkAudioPermission()
                 icmicro?.setImageResource(R.drawable.ic_mic_subst)
                 Toast.makeText(requireActivity(), "Say the answer", Toast.LENGTH_SHORT).show()
                 startSpeechToText()
@@ -82,25 +80,6 @@ class plus_game_2 : Fragment() {
         }
         return v
     }
-
-    private fun checkAudioPermission() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {  // M = 23
-            if (ContextCompat.checkSelfPermission(
-                    requireActivity(),
-                    "android.permission.RECORD_AUDIO"
-                ) != PackageManager.PERMISSION_GRANTED
-            ) {
-                val intent = Intent(
-                    Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
-                    Uri.parse("package:com.programmingtech.offlinespeechtotext")
-                )
-                startActivity(intent)
-                Toast.makeText(requireActivity(), "Allow Microphone Permission", Toast.LENGTH_SHORT)
-                    .show()
-            }
-        }
-    }
-
     private fun startSpeechToText() {
         val speechRecognizer = SpeechRecognizer.createSpeechRecognizer(requireActivity())
         val speechRecognizerIntent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
@@ -137,7 +116,8 @@ class plus_game_2 : Fragment() {
                     }
                     result?.text = cleared
                     if (cleared == (randomValue1 + randomValue2).toString()) {
-                        findNavController().navigate(R.id.action_plus_game_2_to_plus_game, bundle)
+                        val bundles: Bundle = bundleOf("amount" to level)
+                        findNavController().navigate(R.id.action_plus_game_2_to_plus_game, bundles)
                     }
                 }
             }

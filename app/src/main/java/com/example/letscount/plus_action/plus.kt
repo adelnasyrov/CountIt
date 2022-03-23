@@ -1,13 +1,19 @@
 package com.example.letscount.plus_action
 
+import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.cardview.widget.CardView
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.example.letscount.R
@@ -23,7 +29,7 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class show_memes : Fragment() {
-    // TODO: Rename and change types of parameters
+    private val MY_PERMISSIONS_RECORD_AUDIO = 1
     private var param1: String? = null
     private var param2: String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,13 +47,60 @@ class show_memes : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val v = inflater.inflate(R.layout.fragment_plus, container, false)
-        val cardView: CardView = v.findViewById(R.id.plus_easy)
+        val cardView: CardView = v.findViewById(R.id.easy)
+        val cardView2: CardView = v.findViewById(R.id.medium)
+        val cardView3: CardView = v.findViewById(R.id.hard)
+        requestAudioPermissions()
         cardView.setOnClickListener {
-            Navigation.findNavController(v).navigate(R.id.action_plus_to_plus_game)
+            val bundle = bundleOf("amount" to "1")
+            Navigation.findNavController(v).navigate(R.id.action_plus_to_plus_game, bundle)
+        }
+        cardView2.setOnClickListener {
+            val bundle = bundleOf("amount" to "2")
+            Navigation.findNavController(v).navigate(R.id.action_plus_to_plus_game, bundle)
+        }
+        cardView3.setOnClickListener {
+            val bundle = bundleOf("amount" to "3")
+            Navigation.findNavController(v).navigate(R.id.action_plus_to_plus_game, bundle)
         }
         return v
     }
 
+    private fun requestAudioPermissions() {
+        if (ContextCompat.checkSelfPermission(
+                requireActivity(),
+                Manifest.permission.RECORD_AUDIO
+            )
+            != PackageManager.PERMISSION_GRANTED
+        ) {
+
+            //When permission is not granted by user, show them message why this permission is needed.
+            if (ActivityCompat.shouldShowRequestPermissionRationale(
+                    requireActivity(),
+                    Manifest.permission.RECORD_AUDIO
+                )
+            ) {
+                Toast.makeText(
+                    requireActivity(),
+                    "Please grant permissions to record audio",
+                    Toast.LENGTH_LONG
+                )
+                    .show()
+
+                //Give user option to still opt-in the permissions
+                ActivityCompat.requestPermissions(
+                    requireActivity(), arrayOf(Manifest.permission.RECORD_AUDIO),
+                    MY_PERMISSIONS_RECORD_AUDIO
+                )
+            } else {
+                // Show user dialog to grant permission to record audio
+                ActivityCompat.requestPermissions(
+                    requireActivity(), arrayOf(Manifest.permission.RECORD_AUDIO),
+                    MY_PERMISSIONS_RECORD_AUDIO
+                )
+            }
+        }
+    }
     override fun onAttach(context: Context) {
         super.onAttach(context)
         val callback: OnBackPressedCallback =

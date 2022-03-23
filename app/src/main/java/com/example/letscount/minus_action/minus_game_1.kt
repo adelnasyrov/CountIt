@@ -1,15 +1,19 @@
-package com.example.letscount.plus_action
+package com.example.letscount.minus_action
 
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.speech.RecognitionListener
 import android.speech.RecognizerIntent
 import android.speech.SpeechRecognizer
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -30,16 +34,14 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [show_memes5.newInstance] factory method to
+ * Use the [minus_game_1.newInstance] factory method to
  * create an instance of this fragment.
  */
-
-class show_memes5 : Fragment() {
+class minus_game_1 : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-    private var result: TextView? = null
-    private var score_text: TextView? = null
+    private var result: EditText? = null
     private var randomValue1: Int = 0
     private val MY_PERMISSIONS_RECORD_AUDIO = 1
     private var randomValue2: Int = 0
@@ -55,12 +57,11 @@ class show_memes5 : Fragment() {
         }
     }
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val v = inflater.inflate(R.layout.fragment_plus_game_1, container, false)
+        val v = inflater.inflate(R.layout.fragment_minus_game_1, container, false)
         val number1: TextView = v.findViewById(R.id.number1)
         val number2: TextView = v.findViewById(R.id.number2)
         icmicro = v.findViewById(R.id.ic_micro)
@@ -77,8 +78,38 @@ class show_memes5 : Fragment() {
         randomValue2 = Random.nextInt(0, range)
         number1.text = randomValue1.toString()
         number2.text = randomValue2.toString()
+        result?.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {}
+            override fun beforeTextChanged(
+                s: CharSequence, start: Int,
+                count: Int, after: Int
+            ) {
+            }
+
+            override fun onTextChanged(
+                s: CharSequence, start: Int,
+                before: Int, count: Int
+            ) {
+                if ((randomValue1 - randomValue2).toString() == result?.text.toString()) {
+                    object : CountDownTimer(500, 1) {
+                        override fun onTick(millisUntilFinished: Long) {
+                        }
+
+                        override fun onFinish() {
+
+                        }
+                    }.start()
+                    val bundles = bundleOf("amount" to level)
+                    findNavController().navigate(
+                        R.id.action_minus_game_1_to_minus_game_2,
+                        bundles
+                    )
+                }
+            }
+        })
         icmicro?.setOnClickListener {
             if (flag == 0) {
+                result?.setText("", TextView.BufferType.EDITABLE)
                 flag = 1
                 requestAudioPermissions()
                 icmicro?.setImageResource(R.drawable.ic_mic_subst)
@@ -86,7 +117,6 @@ class show_memes5 : Fragment() {
             }
         }
         return v
-
     }
 
     private fun requestAudioPermissions() {
@@ -159,17 +189,20 @@ class show_memes5 : Fragment() {
                     var toClear: String = results[0]
                     var cleared: String = ""
                     for (i in toClear.indices) {
-                        if (toClear[i].toInt() in 48..57) {
+                        if (toClear[i].code in 48..57 || toClear[i].toInt() == 45) {
                             cleared += toClear[i]
                         } else {
                             if (cleared.isNotEmpty())
                                 break
                         }
                     }
-                    result?.text = cleared
-                    if (cleared == (randomValue1 + randomValue2).toString()) {
+                    result?.setText(cleared, TextView.BufferType.EDITABLE)
+                    if (cleared == (randomValue1 - randomValue2).toString()) {
                         val bundles = bundleOf("amount" to level)
-                        findNavController().navigate(R.id.action_plus_game_to_plus_game_2, bundles)
+                        findNavController().navigate(
+                            R.id.action_minus_game_1_to_minus_game_2,
+                            bundles
+                        )
                     }
                 }
             }
@@ -181,7 +214,6 @@ class show_memes5 : Fragment() {
         speechRecognizer.startListening(speechRecognizerIntent)
     }
 
-
     companion object {
         /**
          * Use this factory method to create a new instance of
@@ -189,12 +221,12 @@ class show_memes5 : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment show_memes5.
+         * @return A new instance of fragment minus_game_1.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            show_memes5().apply {
+            minus_game_1().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

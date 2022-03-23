@@ -1,14 +1,18 @@
 package com.example.letscount
 
+import android.Manifest
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.os.CountDownTimer
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.cardview.widget.CardView
-import androidx.navigation.fragment.findNavController
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -24,6 +28,7 @@ private const val ARG_PARAM2 = "param2"
 class starter : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
+    private var MY_PERMISSIONS_RECORD_AUDIO = 1
     private var param2: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,7 +44,8 @@ class starter : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val v = inflater.inflate(R.layout.fragment_starter, container, false)
-        object : CountDownTimer(3000, 1000) {
+        requestAudioPermissions()
+        object : CountDownTimer(1000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
             }
 
@@ -48,6 +54,42 @@ class starter : Fragment() {
             }
         }.start()
         return v
+    }
+
+    private fun requestAudioPermissions() {
+        if (ContextCompat.checkSelfPermission(
+                requireActivity(),
+                Manifest.permission.RECORD_AUDIO
+            )
+            != PackageManager.PERMISSION_GRANTED
+        ) {
+
+            //When permission is not granted by user, show them message why this permission is needed.
+            if (ActivityCompat.shouldShowRequestPermissionRationale(
+                    requireActivity(),
+                    Manifest.permission.RECORD_AUDIO
+                )
+            ) {
+                Toast.makeText(
+                    requireActivity(),
+                    "Please grant permissions to record audio",
+                    Toast.LENGTH_LONG
+                )
+                    .show()
+
+                //Give user option to still opt-in the permissions
+                ActivityCompat.requestPermissions(
+                    requireActivity(), arrayOf(Manifest.permission.RECORD_AUDIO),
+                    MY_PERMISSIONS_RECORD_AUDIO
+                )
+            } else {
+                // Show user dialog to grant permission to record audio
+                ActivityCompat.requestPermissions(
+                    requireActivity(), arrayOf(Manifest.permission.RECORD_AUDIO),
+                    MY_PERMISSIONS_RECORD_AUDIO
+                )
+            }
+        }
     }
 
     override fun onResume() {

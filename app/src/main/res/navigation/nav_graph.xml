@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/plus">
+    app:startDestination="@id/starter">
 
     <fragment
         android:id="@+id/plus"
@@ -25,7 +25,8 @@
         <action
             android:id="@+id/action_plus_to_plus_game"
             app:destination="@id/plus_game"
-            app:enterAnim="@anim/from_right" />
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
     </fragment>
 
     <fragment
@@ -45,6 +46,11 @@
             android:id="@+id/action_minus_to_multiplication"
             app:destination="@id/multiplication"
             app:enterAnim="@anim/from_right" />
+        <action
+            android:id="@+id/action_minus_to_minus_game_1"
+            app:destination="@id/minus_game_1"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/multiplication"
@@ -90,7 +96,8 @@
         <action
             android:id="@+id/action_plus_game_to_plus_game_2"
             app:destination="@id/plus_game_2"
-            app:enterAnim="@anim/from_right_2" />
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/plus_game_2"
@@ -100,7 +107,8 @@
         <action
             android:id="@+id/action_plus_game_2_to_plus_game"
             app:destination="@id/plus_game"
-            app:enterAnim="@anim/from_right_2" />
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/starter"
@@ -110,6 +118,28 @@
         <action
             android:id="@+id/action_starter_to_plus"
             app:destination="@id/plus"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/minus_game_2"
+        android:name="com.example.letscount.minus_action.minus_game_2"
+        android:label="fragment_minus_game_2"
+        tools:layout="@layout/fragment_minus_game_2">
+        <action
+            android:id="@+id/action_minus_game_2_to_minus_game_1"
+            app:destination="@id/minus_game_1"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/minus_game_1"
+        android:name="com.example.letscount.minus_action.minus_game_1"
+        android:label="fragment_minus_game_1"
+        tools:layout="@layout/fragment_minus_game_1">
+        <action
+            android:id="@+id/action_minus_game_1_to_minus_game_2"
+            app:destination="@id/minus_game_2"
             app:enterAnim="@anim/fade_in"
             app:exitAnim="@android:anim/fade_out" />
     </fragment>

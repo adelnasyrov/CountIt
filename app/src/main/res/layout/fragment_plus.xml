@@ -25,7 +25,7 @@
             tools:ignore="ImageContrastCheck" />
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/plus_easy"
+            android:id="@+id/easy"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginStart="50dp"
@@ -64,7 +64,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/plus_medium"
+            android:id="@+id/medium"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginStart="50dp"
@@ -74,7 +74,7 @@
             android:outlineProvider="none"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/plus_easy">
+            app:layout_constraintTop_toBottomOf="@id/easy">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -103,7 +103,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/plus_hard"
+            android:id="@+id/hard"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginStart="50dp"
@@ -112,7 +112,7 @@
             android:backgroundTint="@color/back"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/plus_medium">
+            app:layout_constraintTop_toBottomOf="@id/medium">
 
             <LinearLayout
                 android:layout_width="match_parent"
