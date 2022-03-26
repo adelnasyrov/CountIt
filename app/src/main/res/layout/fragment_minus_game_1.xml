@@ -14,7 +14,7 @@
         android:textSize="35sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/icon_minus"
-        app:layout_constraintStart_toStawrtOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.3" />
 
@@ -25,7 +25,7 @@
         android:textColor="#fcc279"
         android:textSize="35sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/icon_equal"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/icon_minus"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.3" />
@@ -41,40 +41,30 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.3" />
 
-    <ImageView
-        android:id="@+id/icon_equal"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:backgroundTint="@color/back"
-        android:src="@drawable/icon_equal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/result_crd"
-        app:layout_constraintStart_toEndOf="@id/number2"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.3" />
-
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/result_crd"
-        android:layout_width="75dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         app:cardCornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/icon_equal"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.3"
-        app:strokeColor="#FF0000"
+        app:layout_constraintVertical_bias="0.45"
+        app:strokeColor="#ffffff"
         app:strokeWidth="4dp">
 
         <EditText
-            android:padding="5dp"
             android:id="@+id/result"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/back"
+            android:gravity="center"
+            android:padding="5dp"
             android:textColor="#fcc279"
             android:textSize="35sp"
-            app:layout_constraintVertical_bias="0.3" />
+            app:layout_constraintVertical_bias="0.3"
+            tools:ignore="SpeakableTextPresentCheck" />
     </com.google.android.material.card.MaterialCardView>
 
     <ImageView
@@ -85,8 +75,20 @@
         android:backgroundTint="@color/back"
         android:gravity="center_horizontal"
         android:scaleType="fitXY"
-        android:src="@drawable/ic_mic"
+        android:src="@drawable/inactive_micro"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/score" />
+
+    <TextView
+        android:id="@+id/score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Score: 0"
+        android:fontFamily="@font/comfortaa_medium"
+        android:textColor="#FF910E"
+        app:layout_constraintTop_toTopOf="@id/ic_micro"
+        app:layout_constraintBottom_toBottomOf="@id/ic_micro"
+        app:layout_constraintEnd_toStartOf="@id/ic_micro"
         app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

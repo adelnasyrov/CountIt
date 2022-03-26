@@ -45,12 +45,13 @@ class show_memes2 : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val v = inflater.inflate(R.layout.fragment_minus, container, false)
+        val score = 4
         val cardView: CardView = v.findViewById(R.id.easy)
         val cardView2: CardView = v.findViewById(R.id.medium)
         val cardView3: CardView = v.findViewById(R.id.hard)
         requestAudioPermissions()
         cardView.setOnClickListener {
-            val bundle = bundleOf("amount" to "1")
+            val bundle: Bundle = bundleOf("amount" to "1$score")
             Navigation.findNavController(v).navigate(R.id.action_minus_to_minus_game_1, bundle)
         }
         cardView2.setOnClickListener {

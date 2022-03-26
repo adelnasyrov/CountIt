@@ -1,10 +1,15 @@
 package com.example.letscount.minus_action
 
+import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.speech.RecognitionListener
 import android.speech.RecognizerIntent
 import android.speech.SpeechRecognizer
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +20,7 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.letscount.R
+import com.google.android.material.card.MaterialCardView
 import java.util.*
 import kotlin.random.Random
 
@@ -30,9 +36,8 @@ private const val ARG_PARAM2 = "param2"
  */
 class minus_game_2 : Fragment() {
     // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
     private var level: String? = null
+    private var score: Int? = null
     private var result: TextView? = null
     private var icmicro: ImageView? = null
     private var flag: Int = 0
@@ -42,21 +47,25 @@ class minus_game_2 : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+            level = it.getString(ARG_PARAM1)
+            score = it.getInt(ARG_PARAM2)
         }
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val v = inflater.inflate(R.layout.fragment_minus_game_2, container, false)
+        val score_txt: TextView = v.findViewById(R.id.score)
         val number1: TextView = v.findViewById(R.id.number1)
         val number2: TextView = v.findViewById(R.id.number2)
+        val result_crd: MaterialCardView = v.findViewById(R.id.result_crd)
         icmicro = v.findViewById(R.id.ic_micro)
         result = v.findViewById(R.id.result)
         level = arguments?.getString("amount")
+        score_txt.text = "Score: $score"
         var range: Int = 10
         if (level == "1")
             range = 10
@@ -68,10 +77,42 @@ class minus_game_2 : Fragment() {
         randomValue2 = Random.nextInt(0, range)
         number1.text = randomValue1.toString()
         number2.text = randomValue2.toString()
+        result?.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {}
+            override fun beforeTextChanged(
+                s: CharSequence, start: Int,
+                count: Int, after: Int
+            ) {
+            }
+
+            override fun onTextChanged(
+                s: CharSequence, start: Int,
+                before: Int, count: Int
+            ) {
+                result_crd.strokeColor = Color.parseColor("#FF0000")
+                if ((randomValue1 - randomValue2).toString() == result?.text.toString()) {
+                    result_crd.strokeColor = Color.parseColor("#008000")
+                    object : CountDownTimer(500, 1) {
+                        override fun onTick(millisUntilFinished: Long) {
+                        }
+
+                        override fun onFinish() {
+                            val bundles = bundleOf("amount" to level)
+                            findNavController().navigate(
+                                R.id.action_minus_game_2_to_minus_game_1,
+                                bundles
+                            )
+                        }
+                    }.start()
+                }
+            }
+        })
         icmicro?.setOnClickListener {
             if (flag == 0) {
                 flag = 1
-                icmicro?.setImageResource(R.drawable.ic_mic_subst)
+                icmicro?.setImageResource(
+                    R.drawable.micro
+                )
                 Toast.makeText(requireActivity(), "Say the answer", Toast.LENGTH_SHORT).show()
                 startSpeechToText()
             }
