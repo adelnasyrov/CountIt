@@ -73,7 +73,7 @@ class plus_game_2 : Fragment() {
         icmicro?.setOnClickListener {
             if (flag == 0) {
                 flag = 1
-                icmicro?.setImageResource(R.drawable.ic_mic_subst)
+                icmicro?.setImageResource(R.drawable.micro)
                 Toast.makeText(requireActivity(), "Say the answer", Toast.LENGTH_SHORT).show()
                 startSpeechToText()
             }
@@ -95,7 +95,7 @@ class plus_game_2 : Fragment() {
             override fun onRmsChanged(v: Float) {}
             override fun onBufferReceived(bytes: ByteArray?) {}
             override fun onEndOfSpeech() {
-                icmicro?.setImageResource(R.drawable.ic_mic)
+                icmicro?.setImageResource(R.drawable.inactive_micro)
                 flag = 0
             }
 

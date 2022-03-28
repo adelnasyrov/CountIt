@@ -95,6 +95,7 @@ class MinusGameSecond : Fragment() {
             ) {
                 resultCard.strokeColor = Color.parseColor("#FF0000")
                 if ((randomValue1 - randomValue2).toString() == result?.text.toString()) {
+                    result?.isFocusable = false
                     resultCard.strokeColor = Color.parseColor("#008000")
                     object : CountDownTimer(500, 1) {
                         override fun onTick(millisUntilFinished: Long) {
@@ -170,11 +171,13 @@ class MinusGameSecond : Fragment() {
                         if (toClear[i].code in 48..57 || toClear[i].code == 45) {
                             cleared += toClear[i]
                         } else {
-                            if (cleared.isNotEmpty())
-                                break
+                            if (toClear[i] != ' ') {
+                                if (cleared.isNotEmpty())
+                                    break
+                            }
                         }
                     }
-                    result?.text = cleared
+                    result?.setText(cleared.toInt().toString(), TextView.BufferType.EDITABLE)
                 }
             }
 

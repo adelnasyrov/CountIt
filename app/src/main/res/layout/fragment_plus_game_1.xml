@@ -73,7 +73,7 @@
         android:backgroundTint="@color/back"
         android:gravity="center_horizontal"
         android:scaleType="fitXY"
-        android:src="@drawable/ic_mic"
+        android:src="@drawable/inactive_micro"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

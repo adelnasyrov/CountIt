@@ -81,7 +81,7 @@ class show_memes5 : Fragment() {
             if (flag == 0) {
                 flag = 1
                 requestAudioPermissions()
-                icmicro?.setImageResource(R.drawable.ic_mic_subst)
+                icmicro?.setImageResource(R.drawable.micro)
                 Toast.makeText(requireActivity(), "Say the answer", Toast.LENGTH_SHORT).show()
             }
         }
@@ -147,7 +147,7 @@ class show_memes5 : Fragment() {
             override fun onRmsChanged(v: Float) {}
             override fun onBufferReceived(bytes: ByteArray?) {}
             override fun onEndOfSpeech() {
-                icmicro?.setImageResource(R.drawable.ic_mic)
+                icmicro?.setImageResource(R.drawable.inactive_micro)
                 flag = 0
             }
 
