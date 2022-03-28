@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".minus_action.minus_game_2">
+    tools:context=".minus_action.MinusGameSecond">
 
     <TextView
         android:id="@+id/number1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#e3bec7"
+        android:textColor="#fcc279"
         android:textSize="35sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/icon_minus"
@@ -22,7 +22,7 @@
         android:id="@+id/number2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#e3bec7"
+        android:textColor="#fcc279"
         android:textSize="35sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -58,6 +58,7 @@
             android:id="@+id/result"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:inputType="numberSigned"
             android:background="@color/back"
             android:gravity="center"
             android:padding="5dp"
@@ -82,8 +83,8 @@
         android:id="@+id/score"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Score: 0"
-        android:fontFamily="@font/comfortaa_medium"
+        android:text="@string/score"
+        android:textSize="20sp"
         android:textColor="#FF910E"
         app:layout_constraintTop_toTopOf="@id/ic_micro"
         app:layout_constraintBottom_toBottomOf="@id/ic_micro"

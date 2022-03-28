@@ -5,7 +5,7 @@
     android:id="@+id/kaka"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".minus_action.show_memes2">
+    tools:context=".minus_action.Minus">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

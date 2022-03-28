@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".minus_action.minus_game_1">
+    tools:context=".minus_action.MinusGameFirst">
 
     <TextView
         android:id="@+id/number1"
@@ -57,6 +57,7 @@
         <EditText
             android:id="@+id/result"
             android:layout_width="match_parent"
+            android:inputType="numberSigned"
             android:layout_height="match_parent"
             android:background="@color/back"
             android:gravity="center"
@@ -84,8 +85,8 @@
         android:id="@+id/score"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Score: 0"
-        android:fontFamily="@font/comfortaa_medium"
+        android:text="@string/score"
+        android:textSize="20sp"
         android:textColor="#FF910E"
         app:layout_constraintTop_toTopOf="@id/ic_micro"
         app:layout_constraintBottom_toBottomOf="@id/ic_micro"
