@@ -14,6 +14,7 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -95,6 +96,9 @@ class MinusGameSecond : Fragment() {
             ) {
                 resultCard.strokeColor = Color.parseColor("#FF0000")
                 if ((randomValue1 - randomValue2).toString() == result?.text.toString()) {
+                    val imm: InputMethodManager =
+                        requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                    imm.hideSoftInputFromWindow(view?.windowToken, 0)
                     result?.isFocusable = false
                     resultCard.strokeColor = Color.parseColor("#008000")
                     object : CountDownTimer(500, 1) {

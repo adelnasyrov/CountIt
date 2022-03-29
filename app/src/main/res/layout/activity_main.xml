@@ -18,7 +18,7 @@
         android:layout_gravity="start"
         android:background="@color/back"
         android:fitsSystemWindows="true"
-        app:menu="@menu/menu1" />
+        app:menu="@menu/menu2" />
 
 
 </androidx.drawerlayout.widget.DrawerLayout>
