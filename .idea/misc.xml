@@ -5,7 +5,15 @@
       <map>
         <entry key="app/src/main/res/drawable-nodpi/ic_baseline_menu_24.xml" value="0.145" />
         <entry key="app/src/main/res/drawable-nodpi/menu.xml" value="0.145" />
+        <entry key="app/src/main/res/drawable-nodpi/menu_plus.xml" value="0.18" />
+        <entry key="app/src/main/res/drawable/exit.xml" value="0.145" />
+        <entry key="app/src/main/res/drawable/exit_minus.xml" value="0.18" />
+        <entry key="app/src/main/res/drawable/exit_multiplication.xml" value="0.18" />
+        <entry key="app/src/main/res/drawable/exit_plus.xml" value="0.18" />
+        <entry key="app/src/main/res/drawable/ic_baseline_exit_to_app_24.xml" value="0.18" />
         <entry key="app/src/main/res/drawable/menu_minus.xml" value="0.145" />
+        <entry key="app/src/main/res/drawable/menu_multiplication.xml" value="0.18" />
+        <entry key="app/src/main/res/drawable/multiplication_icon_selector.xml" value="0.18" />
         <entry key="app/src/main/res/drawable/outline.xml" value="0.27897435897435896" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2671875" />
         <entry key="app/src/main/res/layout/bottom_nav_view.xml" value="0.2671875" />
@@ -13,14 +21,14 @@
         <entry key="app/src/main/res/layout/fragment_division.xml" value="0.2671875" />
         <entry key="app/src/main/res/layout/fragment_minus.xml" value="0.2671875" />
         <entry key="app/src/main/res/layout/fragment_minus_game1.xml" value="0.2671875" />
-        <entry key="app/src/main/res/layout/fragment_minus_game_1.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/fragment_minus_game_1.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_minus_game_2.xml" value="0.375" />
         <entry key="app/src/main/res/layout/fragment_multiplication.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_plus.xml" value="0.2671875" />
         <entry key="app/src/main/res/layout/fragment_plus_game_1.xml" value="0.2671875" />
         <entry key="app/src/main/res/layout/fragment_plus_game_2.xml" value="0.2671875" />
         <entry key="app/src/main/res/layout/fragment_starter.xml" value="0.2671875" />
-        <entry key="app/src/main/res/layout/up_bar_view.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/up_bar_view.xml" value="0.20307250976562502" />
         <entry key="app/src/main/res/menu/menu1.xml" value="0.2671875" />
         <entry key="app/src/main/res/menu/menu2.xml" value="0.2671875" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.27897435897435896" />

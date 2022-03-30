@@ -219,8 +219,10 @@ class MinusGameFirst : Fragment() {
                 if (results != null) {
                     val toClear: String = results[0]
                     var cleared = ""
+                    var localFlag = 0
                     for (i in toClear.indices) {
-                        if (toClear[i].code in 48..57 || toClear[i].code == 45) {
+                        if (toClear[i].code in 48..57 || (toClear[i].code == 45 && localFlag == 0)) {
+                            localFlag = 1
                             cleared += toClear[i]
                         } else {
                             if (toClear[i] != ' ') {
@@ -229,6 +231,8 @@ class MinusGameFirst : Fragment() {
                             }
                         }
                     }
+                    if (cleared == "")
+                        cleared = "-1"
                     result?.setText(cleared.toInt().toString(), TextView.BufferType.EDITABLE)
                 }
             }

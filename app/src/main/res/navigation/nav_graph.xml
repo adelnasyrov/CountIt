@@ -24,7 +24,7 @@
             app:enterAnim="@anim/from_right" />
         <action
             android:id="@+id/action_plus_to_plus_game"
-            app:destination="@id/plus_game"
+            app:destination="@id/plus_game_1"
             app:enterAnim="@anim/fade_in"
             app:exitAnim="@anim/fade_out" />
     </fragment>
@@ -89,7 +89,7 @@
             app:enterAnim="@anim/from_left" />
     </fragment>
     <fragment
-        android:id="@+id/plus_game"
+        android:id="@+id/plus_game_1"
         android:name="com.example.letscount.plus_action.show_memes5"
         android:label="fragment_show_memes5"
         tools:layout="@layout/fragment_plus_game_1">
@@ -106,7 +106,7 @@
         tools:layout="@layout/fragment_plus_game_2">
         <action
             android:id="@+id/action_plus_game_2_to_plus_game"
-            app:destination="@id/plus_game"
+            app:destination="@id/plus_game_1"
             app:enterAnim="@anim/fade_in"
             app:exitAnim="@anim/fade_out" />
     </fragment>

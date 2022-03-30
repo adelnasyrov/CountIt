@@ -11,6 +11,7 @@ import android.speech.RecognizerIntent
 import android.speech.SpeechRecognizer
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -171,8 +172,11 @@ class MinusGameSecond : Fragment() {
                 if (results != null) {
                     val toClear: String = results[0]
                     var cleared = ""
+                    var localFlag = 0
                     for (i in toClear.indices) {
-                        if (toClear[i].code in 48..57 || toClear[i].code == 45) {
+                        Log.d("hueta konesho", toClear[i].toString())
+                        if (toClear[i].code in 48..57 || (toClear[i].code == 45 && localFlag == 0)) {
+                            localFlag = 1
                             cleared += toClear[i]
                         } else {
                             if (toClear[i] != ' ') {
@@ -181,6 +185,8 @@ class MinusGameSecond : Fragment() {
                             }
                         }
                     }
+                    if (cleared == "")
+                        cleared = "-1"
                     result?.setText(cleared.toInt().toString(), TextView.BufferType.EDITABLE)
                 }
             }
