@@ -11,6 +11,7 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import androidx.navigation.ui.NavigationUI
 import com.example.letscount.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
@@ -20,7 +21,6 @@ class MainActivity : AppCompatActivity() {
     private var drawerLayout: DrawerLayout? = null
     private var bottomNavigationView: BottomNavigationView? = null
     private lateinit var navController: NavController
-    private var navigationView: NavigationView? = null
 
     @SuppressLint("RestrictedApi")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,12 +32,13 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeAsUpIndicator(R.drawable.menu_plus)
         drawerLayout = findViewById(R.id.drawer)
-        navigationView = findViewById(R.id.nav_view)
-        navigationView?.itemIconTintList = null
+        val navigationView: NavigationView = findViewById(R.id.nav_view)
+        navigationView.itemIconTintList = null
         bottomNavigationView = findViewById(R.id.bottom)
-        navigationView?.setCheckedItem(R.id.plus)
+        navigationView.setCheckedItem(R.id.plus)
         bottomNavigationView?.itemIconTintList = null
         navController = findNavController(R.id.nav_host_fragment_content_main)
+        NavigationUI.setupWithNavController(navigationView, navController)
         var currentItem = "plus"
         bottomNavigationView?.setOnItemSelectedListener { item ->
             when (item.itemId) {
